@@ -1,9 +1,10 @@
-const classe =`
+const classe = `
     type class{
         id: ID!
         name: String!
         description:String
         createdAt:String
+        imageUrl: String
         lastupdate:String
         courses:[Course]
         subscribers:[user]
@@ -12,6 +13,7 @@ const classe =`
     input InputClass{
         name:String
         description:String
+        imageUrl: String
     }
     type Query {
         classes: [class]

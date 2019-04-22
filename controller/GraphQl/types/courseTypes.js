@@ -1,4 +1,4 @@
-const classe = require('../../../models/Class');
+const classe = require("../../../models/Class");
 
 const course = `
     type Course{
@@ -8,6 +8,7 @@ const course = `
        contenu: String
        classeId: ID
        classe: class
+       imageUrl: String
        author: user
     }
 
@@ -15,7 +16,9 @@ const course = `
         name:String
         type:String
         contenu: String
+        imageUrl: String
         classeId: ID
+        author: ID
     }
 
     type Query{
@@ -29,5 +32,5 @@ const course = `
         updateCourse(id : ID!, input: inputCourse!): Course
         deleteCourse(id: ID!): Course 
     }
-`
-module.exports = course
+`;
+module.exports = course;
