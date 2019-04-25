@@ -20,5 +20,5 @@ const server = new ApolloServer(schema);
 // can utilize middleware options, which we'll discuss later.
 server.listen().then(({ url, subscriptionsUrl }) => {
   console.log(`🚀  Server ready at ${url}`);
-  console.log(`🚀  Server ready at ${subscriptionsUrl}`);
+  console.log(`🚀 subscription Server ready at ${subscriptionsUrl}`);
 });

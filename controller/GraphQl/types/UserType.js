@@ -1,4 +1,4 @@
-const user=`
+const user = `
     type user{
         id:ID
         name:String
@@ -15,7 +15,7 @@ const user=`
     type Query{
         users:[user]
         user(id : ID!):user
-        findUserByName(name : String): user
+        findUserByName(name : String): [user]
     }
     type Mutation{
         subscribe(user_id: ID! , class_id: ID!): user
@@ -23,6 +23,6 @@ const user=`
         notify(user_id: ID! , notification: String):user
     }
 
-`
+`;
 
 module.exports = user;

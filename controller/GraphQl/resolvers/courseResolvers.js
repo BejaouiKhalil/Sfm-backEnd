@@ -20,10 +20,8 @@ module.exports = {
       console.log(courses);
       return courses;
     },
-    findCourseByName: async (_, { name }) => {
-      const obj = await course.findOne({ name: name });
-      console.log(obj);
-      return obj;
+    findCourseByName: (_, { name }) => {
+      return course.find({ name: { $regex: ".*" + name + ".*" } });
     }
   },
   Mutation: {

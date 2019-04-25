@@ -24,7 +24,7 @@ const course = `
     type Query{
         courses:[Course]
         course(id:ID!):Course
-        findCourseByName(name:String):Course
+        findCourseByName(name:String):[Course]
         findCoursesByClass(class_id:ID!):Course
     }
     type Mutation{
