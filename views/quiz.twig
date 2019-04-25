@@ -1,0 +1,19 @@
+<div >
+        {% for doc in docs %}
+    <h1>{{ doc.titre }}</h1>
+    <p>{{ doc.description }}</p>
+
+{% for d in doc.questions  %}
+    <h2>{{ d.description }}</h2>
+    {% for r in d.reponses  %}
+ <input  type="checkbox" value="{{ r.score }}"  >{{ r.description }}</input>
+
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+
+</div>
+</br>
+
+<button >Submit </button>
+
