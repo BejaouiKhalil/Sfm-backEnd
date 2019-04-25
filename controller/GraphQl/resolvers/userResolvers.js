@@ -11,7 +11,7 @@ module.exports = {
       }
     },
     findUserByName: async (_, { name }) => {
-      return course.find({ name: { $regex: ".*" + name + ".*" } });
+      return user.find({ name: { $regex: ".*" + name + ".*" } });
     }
   },
   Mutations: {
