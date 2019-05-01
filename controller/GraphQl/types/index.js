@@ -10,6 +10,6 @@ type Subscription {
   courseAdded: Course
 }`;
 
-const typeDefs = [subscribtion, classe, course, rate, user];
+const typeDefs = [classe, course, rate, user, subscribtion];
 
 module.exports = mergeTypes(typeDefs, { all: true });
