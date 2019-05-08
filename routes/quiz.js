@@ -1,26 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var User = require('../model/user');
-var Question = require('../model/question');
-var Quiz = require('../model/quiz');
-var Reponse = require('../model/reponse');
-var Attempt = require('../model/quizattempt');
-var nodemailer = require("nodemailer");
-var Demand = require('../model/quizdemand');
-var Game= require('../model/gameplay');
+var User = require('../models/User');
+var Question = require('../models/question');
+var Quiz = require('../models/quiz');
+var Reponse = require('../models/reponse');
+var Attempt = require('../models/quizattempt');
+var Demand = require('../models/quizdemand');
+var Game= require('../models/gameplay');
 
-var smtpTransport = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 587,
-    auth: {
-        user: 'sfmlearning111@gmail.com',
-        pass: 'esprit2019'
-    },
-    tls: {rejectUnauthorized: false},
-    debug: true
-});
 
 //*******Ajout Quiz*********
 router.post('/quiz/:id', function (req, res, next) {
@@ -284,6 +272,20 @@ router.get('/quiz', function (req, res, next) {
         });
 });
 
+//** Get list of Quizs**//
+router.get('/quizss', function (req, res, next) {
+
+    Quiz.find().populate({
+        path: 'auteur'
+    })
+        .exec(function (err, quizs) {
+            if (err) {
+                res.json(err);
+            }
+            res.json(quizs);
+        });
+});
+
 /*Get quiz by ID*/
 router.get('/quiz/:id', function (req, res, next) {
 
@@ -297,6 +299,7 @@ router.get('/quiz/:id', function (req, res, next) {
         res.json(quizs);
     });
 });
+
 router.get('/quizd/:id', function (req, res, next) {
 
     Quiz.findById(req.params.id).exec(function (err, quizs) {
@@ -463,7 +466,7 @@ router.get('/delquiz/:id', (req, res, next) => {
                                     if (!qsts) {
                                         res.json("deleted");
                                     }
-                                    if (qsts) {
+                                    else if (qsts) {
                                         for (var i = 0; i < qsts.length; i++) {
                                             let query2 = {"_id": qsts[i]._id};
                                             Question.remove(query2, (err) => {
