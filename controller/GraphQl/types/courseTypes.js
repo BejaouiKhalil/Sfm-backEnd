@@ -1,5 +1,3 @@
-const classe = require("../../../models/Class");
-
 const course = `
     type Course{
        id : ID!

@@ -1,24 +1,29 @@
-
 const rate = `
     type rate{
         id: ID!
-        vote: Int!
+        vote: Float!
+        comment: String
         courseId: ID
         course: Course
+        author: user
     }
     input RateInput{
-        vote: Int
+        vote: Float
+        comment: String
         courseId : ID
+        author: ID
     }
 
     type Query{
-        rates(courseId: ID!) : Float
+        Moyrates(courseId: ID!) : Float
+        rates(courseId: ID!) : [rate]
     }
     type Mutation{
+        test:String
         addRate(input : RateInput!) : rate
         deleteRate(id : ID!) : rate
         updateRate(id: ID! , input : RateInput) : rate
 
     }
-`
+`;
 module.exports = rate;
